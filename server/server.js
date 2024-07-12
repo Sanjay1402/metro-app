@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const sendEmail = require('./controllers/sendEmail')
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cors());
 
 app.get('/contactus',  (req, res) => {
    res.sendFile(__dirname + '/public/contactus.html')
